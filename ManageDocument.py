@@ -7,10 +7,8 @@ class ManageDocument:
     listDocument = []
     def soLuongDocument(self):
         return self.listDocument.__len__()
-        
     def themTaiLieu(self, tailieu):
         self.listDocument.append(tailieu)
-        
     def updateTaiLieu(self, maTaiLieu):
         theLoai = input("Nhập thể loại muốn chỉnh sửa: ")
         if (theLoai == "Sách"):
@@ -70,7 +68,7 @@ class ManageDocument:
                     searchResult = doc
         return searchResult
 
-    # sort list theo số lượng
+    # sắp xếp theo số lượng
     def sapxepTaiLieu(self, sap_xep):
         if sap_xep == 'tang':
             self.listDocument.sort(key=lambda x: x.get_soLuongTonKho())
@@ -78,7 +76,6 @@ class ManageDocument:
             self.listDocument.sort(key=lambda x: x.get_soLuongTonKho(), reverse=True)
         else:
             print("Invalid !!")
-
 
     # Hiển thị danh sách tạp chí và báo trong cùng tháng xuất bản
     def hienthicungthang(self, thang):
@@ -107,12 +104,14 @@ class ManageDocument:
             else:
                 print("Lựa chọn không hợp lệ")
 
-
+    #Sắp xếp tài liệu
     def sapXepTaiLieu(self, lua_chon):
         if lua_chon == "tang":
             self.listDocument.sort(key=lambda x: x.tenNSB)
         elif lua_chon == "giam":
             self.listDocument.sort(key=lambda x: x.tenNSB, reverse=True)
+
+    #tìm kiếm tài liệu theo tên nhà xuất bản
     def searchTaiLieu(self, tenNSB):
         ket_qua = []
         for doc in self.listDocument:
@@ -120,7 +119,7 @@ class ManageDocument:
                 ket_qua.append(doc)
         return ket_qua
 
-
+    #Hiển thị tài liệu bán chạy
     def displayTaiLieuBanChay(self):
         TaiLieu_BanChay = sorted(self.listDocument, key=lambda x: (x.soLuongBan, x.soLuongTonKho), reverse=True)
         top5_tonkho_itnhat = TaiLieu_BanChay[:5]
@@ -129,6 +128,7 @@ class ManageDocument:
             if TaiLieu in top5_banchaynhat:
                 print(TaiLieu.get_info())
 
+    #Xóa tài liệu
     def deleteTaiLieu(self, maTaiLieu):
         isDeleted = False
         for doc in self.listDocument:
@@ -137,6 +137,7 @@ class ManageDocument:
                 self.listDocument.remove(doc)
                 isDeleted = True
         return isDeleted
+
     # Hàm hiển thị danh sách sinh viên ra màn hình console
     def showDocument(self):
         for doc in self.listDocument:

@@ -4,7 +4,6 @@ from Bao import Bao
 from TapChi import TapChi
 from Sach import Sach
 import datetime
-
 # khởi tạo một đối tượng QuanLySinhVien để quản lý sinh viên
 manager = ManageDocument()
 while True:
@@ -23,7 +22,7 @@ while True:
         print("**  0. Thoat                                                    **")
         print("******************************************************************")
 
-        key = int(input("Nhap tuy chon: "))
+        key = int(input("Nhập tùy chọn: "))
         if (key == 1):
             print("\n1. Thêm mới tài liệu.")
             theLoai = input("Chọn thể loại muốn thêm: ")
@@ -86,14 +85,14 @@ while True:
         elif (key == 4):
             if (manager.soLuongDocument() > 0):
                 print("\n4. Sắp xếp tài liệu dựa vào doanh thu theo ngày.")
-                lua_chon = input("Sap xep (tang hoac giam) ? ")
+                lua_chon = input("Sắp xếp(tăng hoặc giảm) ? ")
                 manager.sapxeptheodoanhthu(lua_chon)
             else:
-                print("\nSanh sach sinh vien trong!")
+                print("\nDanh sách rỗng!")
         elif (key == 5):
             if (manager.soLuongDocument() > 0):
                 print("\n5. Sắp xếp tài liệu theo tên.")
-                luaChon = input("Vui long lựa chọn sắp xếp từ a->z hay từ z->a: ")
+                luaChon = input("Vui lòng lựa chọn sắp xếp từ a->z hay từ z->a: ")
                 manager.sapXepTaiLieu(luaChon)
                 manager.showDocument()
             else:
@@ -104,7 +103,7 @@ while True:
                 thang = input("Thang phat hanh ? ")
                 manager.hienthicungthang(thang)
             else:
-                print("\nSanh sach sinh vien trong!")
+                print("\nDanh sách rỗng!")
         elif (key == 7):
             if (manager.soLuongDocument() > 0):
                 print("\n7. Hiển thị danh sách bán chạy cần nhập thêm.")
@@ -116,24 +115,24 @@ while True:
                 print("\n8.Xóa tài liệu: ")
                 maTaiLieu = input()
                 if (manager.deleteTaiLieu(maTaiLieu)):
-                    print("\nTài liệu co ma tai lieu = ", maTaiLieu, " da bi xoa.")
+                    print("\nTài liệu có mã tài liệu = ", maTaiLieu, " đã bị xóa.")
                     break
                 else:
-                    print("\nSinh vien co id = ", maTaiLieu, " khong ton tai.")
+                    print("\nTài liệu có mã tài liệu = ", maTaiLieu, " không tồn tại.")
             else:
                 print("\nDanh sách rỗng!")
         elif (key == 9):
             if (manager.soLuongDocument() > 0):
-                print("\n9. Hien thi danh sach tai lieu.")
+                print("\n9. Hiển thị danh sách tài liệu.")
                 manager.showDocument()
             else:
                 print("\nDanh sách rỗng")
         elif (key == 0):
-            print("\nBan da chon thoat chuong trinh!")
+            print("\nBạn đã chọn thoát chương trình!")
             break
         else:
-            print("\nKhong co chuc nang nay!")
-            print("\nHay chon chuc nang trong hop menu.")
+            print("\nKhông có chức năng này!")
+            print("\nHãy chọn chức năng có trong menu.")
     except ValueError as ve:
         print(f"\nLỗi: {ve}. Vui lòng nhập một số thực.")
     except Exception as e:
